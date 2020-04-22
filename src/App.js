@@ -19,7 +19,6 @@ function shuffle(deck) {
 function getCards() {
   const ranks = [
     'A',
-    '1',
     '2',
     '3',
     '4',
@@ -170,7 +169,7 @@ class MagicCardApp extends React.Component {
           <Grid item xs={3}>
             <center>
               <div className="instructions">
-                <Typography variant="h5" component="h3">
+                <Typography variant="subtitle2">
                   {this.getInstructions()}
                 </Typography>
                 {this.state.stage === "reveal"
@@ -229,7 +228,7 @@ const CardTile = (props) => {
 class MagicCardPile extends React.Component {
   render() {
     return (
-      <Grid container spacing={3}>
+      <Grid container spacing={0}>
         {this.props.cards.map(item => (
           <Grid item xs={12} key={item.rank + "-" + item.suit}>
             <center>
