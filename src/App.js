@@ -46,13 +46,35 @@ function getCards() {
   return cards.slice(0, 21);
 }
 
+function selectCardPile(cards, pile) {
+  let newCards = cards.slice(0);
+  // Move the selected pile into the middle of the deck
+  for (let i = 0; i < 7; i++) {
+    const middleCard = 7 + i;
+    const selectedPileCard = pile * 7 + i;
+    const temp = newCards[middleCard];
+    newCards[middleCard] = newCards[selectedPileCard];
+    newCards[selectedPileCard] = temp;
+  }
+  return newCards;
+}
+
+function dealCards(cards) {
+  // deal out the cards to each pile, alternating piles
+  let piles = [[], [], []];
+  for (let i = 0; i < cards.length; i++) {
+    const pile = i % 3;
+    piles[pile].push(cards[i]);
+  }
+  return [].concat(piles[0]).concat(piles[1]).concat(piles[2]);
+}
+
 class MagicCardApp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       cards: getCards(),
       stage: "select_pile_1",
-      chosen: null,
     };
   }
 
@@ -73,6 +95,8 @@ class MagicCardApp extends React.Component {
         return "reveal";
       case "reveal":
         return "reveal";
+      default:
+        return "";
     }
   }
 
@@ -85,58 +109,28 @@ class MagicCardApp extends React.Component {
       case "select_pile_3":
         return "Please select the pile containing your card (last time!)";
       case "reveal":
-        return "Your card is:";
+        return "Is this your card?";
+      default:
+        return "";
     }
-  }
-
-  doSelectPile(cards, pile) {
-    let newCards = cards.slice(0);
-    // Move the selected pile into the middle of the deck
-    for (let i = 0; i < 7; i++) {
-      const middleCard = 7 + i;
-      const selectedPileCard = pile * 7 + i;
-      const temp = newCards[middleCard];
-      newCards[middleCard] = newCards[selectedPileCard];
-      newCards[selectedPileCard] = temp;
-    }
-    return newCards;
-  }
-
-  doDealCards(cards) {
-    // deal out the cards to each pile, alternating piles
-    let piles = [[], [], []];
-    for (let i = 0; i < cards.length; i++) {
-      const pile = i % 3;
-      piles[pile].push(cards[i]);
-    }
-    return [].concat(piles[0]).concat(piles[1]).concat(piles[2]);
   }
 
   setNextState(pile) {
     const nextStage = this.getNextStage();
     switch (this.state.stage) {
       case "select_pile_1":
-      case "select_pile_2": {
-        const cards = this.doDealCards(
-          this.doSelectPile(this.state.cards, pile)
-        );
-        this.setState({
-          cards: cards,
-          stage: nextStage,
-        });
-        break;
-      }
+      case "select_pile_2":
       case "select_pile_3": {
-        // Don't deal out the cards again after the last select
-        const cards = this.doSelectPile(this.state.cards, pile);
         this.setState({
-          chosen: cards[10],
+          cards: dealCards(selectCardPile(this.state.cards, pile)),
           stage: nextStage,
         });
         break;
       }
       case "reveal":
         // do nothing
+        break;
+      default:
         break;
     }
   }
@@ -174,8 +168,8 @@ class MagicCardApp extends React.Component {
                 </Typography>
                 {this.state.stage === "reveal"
                   ? <CardTile
-                      value={this.state.chosen.rank}
-                      suit={this.state.chosen.suit}
+                      value={this.state.cards[10].rank}
+                      suit={this.state.cards[10].suit}
                     />
                   : null
                 }
@@ -195,6 +189,7 @@ class MagicCardApp extends React.Component {
   }
 };
 
+// From: https://codepen.io/ursooperduper/pen/EXWxdW
 const CardTile = (props) => {
   if (props.suit === "♣︎" || props.suit === "♠︎") {
     return (

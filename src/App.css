@@ -10,8 +10,8 @@
 
 .card {
   display: flex;
-  width: 48px;
-  height: 80px;
+  width: 36px;
+  height: 60px;
   background-color: #FFF;
   border-radius: 8px;
   border: 1px solid black;
@@ -28,11 +28,11 @@
 }
 
 .card-value {
-  font-size: 16px;
+  font-size: 12px;
 }
 
 .card-suit {
-  .font-size: 8px;
+  .font-size: 6px;
 }
 
 .card-tl {
