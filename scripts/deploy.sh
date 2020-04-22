@@ -11,6 +11,6 @@ rm -rf *
 rm -rf .gitignore
 cp -R $tmpdir/build/* .
 git add *
-#git commit -am "Site published at $(date)"
-#git push origin HEAD:master
-#git checkout $current_branch
+git commit -am "Site published at $(date)"
+git push origin HEAD:master
+git checkout $current_branch
