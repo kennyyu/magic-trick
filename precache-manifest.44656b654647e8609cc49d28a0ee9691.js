@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "6118bb363407c20f82b485d8499a5510",
+    "revision": "2a50532dfff23d7408dff7a1a179a3ee",
     "url": "/magic-trick/index.html"
   },
   {
-    "revision": "5952e8640136bcd9f459",
+    "revision": "d309491f9c7015b09dfb",
     "url": "/magic-trick/static/css/main.68c1ed1e.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/magic-trick/static/js/2.cdaf25d7.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "5952e8640136bcd9f459",
-    "url": "/magic-trick/static/js/main.4218920c.chunk.js"
+    "revision": "d309491f9c7015b09dfb",
+    "url": "/magic-trick/static/js/main.30c0ce7a.chunk.js"
   },
   {
     "revision": "d856f1e37f7f546c60a3",
