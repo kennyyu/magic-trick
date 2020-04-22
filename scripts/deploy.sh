@@ -5,6 +5,7 @@ current_branch=$(git rev-parse --abbrev-ref HEAD)
 npm run build
 tmpdir=$(mktemp -d)
 mv build $tmpdir
+mv node_modules $tmpdir
 git fetch
 git checkout origin/master
 rm -rf *
@@ -14,3 +15,5 @@ git add *
 git commit -am "Site published at $(date)"
 git push origin HEAD:master
 git checkout $current_branch
+mv $tmpdir/node_modules .
+rm -rf $tmpdir
