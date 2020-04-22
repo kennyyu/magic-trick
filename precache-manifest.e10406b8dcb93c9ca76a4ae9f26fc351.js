@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "2a50532dfff23d7408dff7a1a179a3ee",
+    "revision": "ae5a85b2c59accd330abb9889d66ab1d",
     "url": "/magic-trick/index.html"
   },
   {
-    "revision": "d309491f9c7015b09dfb",
-    "url": "/magic-trick/static/css/main.68c1ed1e.chunk.css"
+    "revision": "a93c734f401cc3652f69",
+    "url": "/magic-trick/static/css/main.48fbda2e.chunk.css"
   },
   {
     "revision": "fe639b4318a106a6aafe",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/magic-trick/static/js/2.cdaf25d7.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "d309491f9c7015b09dfb",
-    "url": "/magic-trick/static/js/main.30c0ce7a.chunk.js"
+    "revision": "a93c734f401cc3652f69",
+    "url": "/magic-trick/static/js/main.3ce2a6ec.chunk.js"
   },
   {
     "revision": "d856f1e37f7f546c60a3",
